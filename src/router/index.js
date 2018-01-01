@@ -68,7 +68,33 @@ export const constantRouterMap = [
       }
     ]
   },
-
+  {
+    path: '/sms',
+    component: Layout,
+    redirect: '/sms/table',
+    name: 'SMS',
+    meta: { title: 'SMS', icon: 'example' },
+    children: [
+      {
+        path: 'send',
+        name: 'Send',
+        component: _import('form/index'),
+        meta: { title: 'Send', icon: 'form' }
+      },
+      {
+        path: 'receive',
+        name: 'Receive',
+        component: _import('table/index'),
+        meta: { title: 'Receive', icon: 'table' }
+      },
+      {
+        path: 'history',
+        name: 'History',
+        component: _import('table/index'),
+        meta: { title: 'History', icon: 'table' }
+      }
+    ]
+  },
   { path: '*', redirect: '/404', hidden: true }
 ]
 
