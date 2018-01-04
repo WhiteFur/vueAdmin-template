@@ -78,7 +78,7 @@ export const constantRouterMap = [
       {
         path: 'send',
         name: 'Send',
-        component: _import('form/index'),
+        component: _import('send/index'),
         meta: { title: 'Send', icon: 'form' }
       },
       {
