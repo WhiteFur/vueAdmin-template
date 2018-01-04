@@ -38,6 +38,7 @@ export const constantRouterMap = [
     path: '/example',
     component: Layout,
     redirect: '/example/table',
+    hidden: true,
     name: 'Example',
     meta: { title: 'Example', icon: 'example' },
     children: [
@@ -59,6 +60,7 @@ export const constantRouterMap = [
   {
     path: '/form',
     component: Layout,
+    hidden: true,
     children: [
       {
         path: 'index',
@@ -84,13 +86,13 @@ export const constantRouterMap = [
       {
         path: 'receive',
         name: 'Receive',
-        component: _import('table/index'),
+        component: _import('receive/index'),
         meta: { title: 'Receive', icon: 'table' }
       },
       {
         path: 'history',
         name: 'History',
-        component: _import('table/index'),
+        component: _import('history/index'),
         meta: { title: 'History', icon: 'table' }
       }
     ]
