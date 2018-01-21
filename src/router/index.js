@@ -78,9 +78,9 @@ export const constantRouterMap = [
     meta: { title: 'SMS', icon: 'example' },
     children: [
       {
-        path: 'send',
-        name: 'Send',
-        component: _import('send/index'),
+        path: 'send_schedule',
+        name: 'SendSchedule',
+        component: _import('sendSchedule/index'),
         meta: { title: 'Send', icon: 'form' }
       },
       {
