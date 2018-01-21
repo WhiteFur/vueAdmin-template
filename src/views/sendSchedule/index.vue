@@ -5,19 +5,12 @@
         <el-input v-model="form.name"></el-input>
       </el-form-item>
       <el-form-item label="店家">
-        <el-select v-model="form.region" placeholder="please select your zone">
-          <el-option label="Zone one" value="shanghai"></el-option>
-          <el-option label="Zone two" value="beijing"></el-option>
+        <el-select v-model="form.group" placeholder="please select your zone">
+          <el-option v-for="group in groups" v-bind:value="group.groupId + group.name" :key="group.groupId"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="預約發送時間">
-        <el-col :span="11">
-          <el-date-picker type="date" placeholder="Pick a date" v-model="form.date1" style="width: 100%;"></el-date-picker>
-        </el-col>
-        <el-col class="line" :span="2">-</el-col>
-        <el-col :span="11">
-          <el-time-picker type="fixed-time" placeholder="Pick a time" v-model="form.date2" style="width: 100%;"></el-time-picker>
-        </el-col>
+        <el-date-picker type="datetime" placeholder="選擇日期時間" v-model="form.date1" style="width: 100%;"></el-date-picker>
       </el-form-item>
       <el-form-item label="立即發送">
         <el-switch v-model="form.delivery"></el-switch>
@@ -29,11 +22,8 @@
           <el-checkbox label="擋玩" name="type"></el-checkbox>
         </el-checkbox-group>
       </el-form-item>
-      <el-form-item label="Resources">
-        <el-radio-group v-model="form.resource">
-          <el-radio label="Sponsor"></el-radio>
-          <el-radio label="Venue"></el-radio>
-        </el-radio-group>
+      <el-form-item label="手機">
+        <el-input v-model="form.name"></el-input>
       </el-form-item>
       <el-form-item label="發送內容">
         <el-input type="textarea" v-model="form.desc"></el-input>
@@ -47,12 +37,15 @@
 </template>
 
 <script>
+import { getSectionGroups } from '@/api/sendSchedule'
 export default {
   data() {
     return {
+      groups:[], 
       form: {
+
         name: '',
-        region: '',
+        group: '',
         date1: '',
         date2: '',
         delivery: false,
@@ -62,9 +55,16 @@ export default {
       }
     }
   },
+  created() {
+    this.fetchData()
+  },
   methods: {
+    fetchData() {
+      getSectionGroups().then(response => {
+        this.groups = response.data.groups
+      })
+    },
     onSubmit() {
-      this.$message('submit!')
     },
     onCancel() {
       this.$message({
