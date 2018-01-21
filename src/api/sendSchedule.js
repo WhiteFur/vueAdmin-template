@@ -6,3 +6,16 @@ export function getSectionGroups() {
     method: 'get'
   })
 }
+
+export function setSendSchedule(groupId, message, sendTime, title) {
+  return request({
+    url: '/send_schedule',
+    method: 'post',
+    data: {
+      groupId,
+      message,
+      sendTime,
+      title
+    }
+  })
+}
