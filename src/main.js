@@ -14,8 +14,10 @@ import store from './store'
 
 import '@/icons' // icon
 import '@/permission' // permission control
+import vueMoment from 'vue-moment'
 
 Vue.use(ElementUI, { locale })
+Vue.use(vueMoment);
 
 Vue.config.productionTip = false
 
